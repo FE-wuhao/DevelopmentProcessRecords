@@ -1,0 +1,60 @@
+// 1. 匈牙利命名字符串和驼峰命名字符串互相转换
+// 说明：
+ // 1. 将字符串匈牙利命名字符串(例如：person_first_name)转成驼峰命名字符串(例如：personFirstName)
+//  2. 将驼峰命名的字符串(例如：personFirstName)转成匈牙利命名字符串(例如：person_first_name)
+ // 3. 字符长度不限
+ // 示例：
+ // const str1 = 'person_first_name';
+ // parseStrToCamelCase(str1); // 返回 'personFirstName'
+ // const str2 = 'personFirstName';
+ // parseStrToHungarianNotation(str2); // 返回 'person_first_name'
+function parseStrToCamelCase(str){
+	let arr=str.split('');
+  for(let i=0;i<arr.length;i++){
+  	if(arr[i]==='_')arr.splice(i,1);
+    arr[i].toUpperCse();
+  }
+  return arr.join('');
+}
+
+function parseStrToHungarianNotation(str){
+	let arr=str.split('');
+  for(let i=0;i<arr.length;i++){
+  	if(arr[i]>'A'  &&  arr[i]<'Z'){
+      	arr[i].toLowerCase();
+    	arr.splice(i-1,1,'_');
+    }
+  }
+  return arr.join('');
+}
+
+// 2. 【编码题】统计字符串中的每一个字符数量并按单个字符数量返回字符数组, (按数量降序排列，空字符标点符号不进行统计，不区分大小写, 相同数量的字符先后顺序任意 );
+// 实例： hellow world 返回结果 ["l", "o", "w", "h", "e", "r", “d”]
+//             a day is a miniature of eternity 返回结果 ["a", "i", "t", "e", "y", "n", "r", "d", "s", "m", "u", "o", "f"]
+function x(str){
+  let arr=str.toLowerCase().split('');
+  let res=[];
+  for(let i=0;i<arr.length;i++){
+    let sum=0;
+    if(arr[i]<'0' || arr[i]>'z'){
+    	arr.splice(i,1);
+      	continue;
+    }
+  	for(let j=i+1;j<arr.length;j++){
+    	if(arr[j]<'0' || arr[j]>'z'){
+          arr.splice(j,1);
+          continue;
+    	}
+      if(arr[i]==arr[j]){
+      	sum++;
+        arr.splice(j,1);
+      }
+    }
+    res.push(arr[i].push(sum));
+  }
+  res.sort((j,k)=>j[0]-k[0]);
+  for(let i=0;i<res.length;i++){
+  	res[i].splice(0,1);
+  }
+  return res.join(',');
+}

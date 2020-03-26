@@ -1,0 +1,59 @@
+3. ['a', 'b', 'c', 'd', 'a'] 数组去重
+function c(arr){
+  return [...new Set(arr)];
+}
+
+
+function x(arr){
+	return arr.filter(item,index){
+    	return arr.indexof(item)==index;
+    }
+}
+
+
+4. 实现以下函数，使得输入的字符串逆序输出
+
+function reverse(str) {
+	let temp=str.split("");
+  	temp.reverse();
+  	return temp.join("");
+}
+
+7. 输出打印结果
+const a = {
+	b: 12,
+}
+
+const add = ({b}) => b= b+1
+
+const add2 = obj => obj.b = obj.b+1
+
+add(a)
+console.log(a.b) 12
+
+add2(a)
+console.log(a.b)13
+
+
+
+
+1. 尽量使用尽可能多的方式实现子元素的垂直水平居中
+
+   <div class="father">
+       <div class="child">  
+       </div>
+   </div>
+   
+   <style>
+       .father {
+           width: 300px;
+           height: 300px;
+           display:flex;
+       }
+       
+       .child {
+         	width:30px;
+         	height:30px;
+           	margin:auto auto;
+       }
+   </style>
